@@ -12,6 +12,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.Storage;
+using Windows.Storage.Pickers;
+
 
 // https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x804 上介绍了“空白页”项模板
 
@@ -25,6 +28,36 @@ namespace file
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+                FileOpenPicker picker = new FileOpenPicker();
+                picker.ViewMode = PickerViewMode.Thumbnail;
+
+                picker.FileTypeFilter.Add(".mp4");
+                picker.FileTypeFilter.Add(".mp3");
+                StorageFile file = await picker.PickSingleFileAsync();
+
+                if (file != null)
+                {
+                    var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.Read);
+                    mediaplayer.SetSource(stream, file.ContentType);
+                }
+                else
+                {
+                    return;
+                }
+        }
+
+        private void Button_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+
+        }
+
+        private void Close (object sender, RoutedEventArgs e)
+        {
+            Application.Current.Exit();
         }
     }
 }

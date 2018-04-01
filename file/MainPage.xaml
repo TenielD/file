@@ -8,6 +8,65 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="36"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
 
+            <Rectangle Fill="#D7D7D7" Grid.Row="0"></Rectangle>
+            <Rectangle Fill="BlanchedAlmond" Grid.Row="1"></Rectangle>
+            <Rectangle Fill="BlanchedAlmond" Grid.Row="2"></Rectangle>
+
+            <TextBlock Text="PiliPala Player"
+                       FontStyle="Italic"
+                       HorizontalAlignment="Left"
+                       FontSize="24"
+                       Grid.Row="0" >
+            </TextBlock>
+
+            <MediaElement Name="mediaplayer"
+                          Grid.Row="2"
+                          HorizontalAlignment="Center"
+                          AutoPlay="True"
+                          AreTransportControlsEnabled="True" 
+                           >
+            </MediaElement>
+
+            <Button Content="Select File"
+                    HorizontalAlignment="Left"
+                    FontStyle="Italic"
+                    MinWidth="100"
+                    MaxHeight="24"
+                    Padding="0"
+                    FontSize="18"
+                    Grid.Row="1"
+                    Click="Button_Click">
+            </Button>
+
+            <Button Content="Switch File"
+                    HorizontalAlignment="Center"
+                    FontStyle="Italic"
+                    MinWidth="100"
+                    MaxHeight="24"
+                    Padding="0"
+                    FontSize="18"
+                    Grid.Row="1"
+                    Click="Button_Click">
+            </Button>
+
+            <DatePicker Grid.Row="1"
+                        HorizontalAlignment="Right"/>
+
+            <Button HorizontalAlignment="Right"
+                    Width="70" Height="40"
+                    Content="Close"
+                    Grid.Row="0"
+                    Click="Close" 
+                    Margin="0,4,4,4">
+            </Button>
+
+        </Grid>
     </Grid>
 </Page>
